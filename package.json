@@ -4,6 +4,7 @@
     "description": "To automate the packager versioning",
     "readme": "Testing the automation of version releasing",
     "license": "ISC",
+    "main": "index.js",
     "author": {
         "name": "Vijay Gangatharan",
         "email": "vijayanand431@gmail.com"
@@ -19,5 +20,8 @@
         "version automation",
         "package",
         "public package"
+    ],
+    "files": [
+        "!.github"
     ]
 }
