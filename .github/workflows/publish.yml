@@ -1,0 +1,52 @@
+name: Publishing the version
+
+run-name: Publish
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  version:
+    runs-on: ubuntu-22.04
+    continue-on-error: false
+    timeout-minutes: 2
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: Get merged PR details
+        id: pr-details
+        uses: peter-evans/pull-request-details@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Read label from merged PR
+        run: |
+          echo("Reading label from previously closed PR")
+
+          labels=$(echo "${{ steps.pr-details.outputs.labels }}" | tr ',' '\n')
+          for label in $labels
+          do
+            echo "Label: $label"
+            if [ $(label) = 'patch' ]; then
+              npm version patch
+            elif [ $(label) = 'minor' ]; then
+              npm version minor
+            elif [ $(label) = 'major' ]; then
+              npm version major
+            fi
+          done
+      - name: Update the code base into `master`
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Version update
+          add_options: --all
+
+  publish:
+    runs-on: ubuntu-22.04
+    continue-on-error: false
+    timeout-minutes: 2
+    needs: version
+    name: Publish
+    steps:
+      - name: publishing package...
+        run: npm publish
