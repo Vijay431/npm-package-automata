@@ -34,9 +34,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: Get merged PR details
+      - name: Get Merged Pull Request Info
         id: pr-details
-        uses: pablogamboa/action-get-merged-pull-request
+        uses: pablogamboa/action-get-merged-pull-request@v1.1
         with:
           github_token: ${{ secrets.TOKEN_PACKAGES }}
       - name: Read label from merged PR
