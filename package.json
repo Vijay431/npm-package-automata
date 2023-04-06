@@ -1,0 +1,23 @@
+{
+    "name": "npm-package-automata",
+    "version": "0.0.1",
+    "description": "To automate the packager versioning",
+    "readme": "Testing the automation of version releasing",
+    "license": "ISC",
+    "author": {
+        "name": "Vijay Gangatharan",
+        "email": "vijayanand431@gmail.com"
+    },
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
+    },
+    "keywords": [
+        "version",
+        "automation",
+        "automate version",
+        "version automation",
+        "package",
+        "public package"
+    ]
+}
