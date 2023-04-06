@@ -41,7 +41,7 @@ jobs:
           github_token: ${{ secrets.TOKEN_PACKAGES }}
       - name: Read label from merged PR
         run: |
-          echo("Reading label from previously closed PR")
+          echo "Reading label from previously closed PR"
 
           labels=$(echo "${{ steps.pr-details.outputs.labels }}" | tr ',' '\n')
           for label in $labels
