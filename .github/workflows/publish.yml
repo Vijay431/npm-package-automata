@@ -5,6 +5,7 @@ on: push
 
 jobs:
   pull-request:
+    name: Pull Request
     if: github.ref == 'refs/heads/dev'
     continue-on-error: true
     runs-on: ubuntu-22.04
@@ -24,7 +25,7 @@ jobs:
 
   version:
     if: github.ref == 'refs/heads/master'
-    name: Version
+    name: Versioning
     runs-on: ubuntu-22.04
     continue-on-error: false
     timeout-minutes: 2
@@ -61,22 +62,4 @@ jobs:
 
           git add .
           git push
-      # - name: Update the code base into `master`
-      #   uses: stefanzweifel/git-auto-commit-action@v4
-      #   with:
-      #     commit_message: Version update
-
-  publish:
-    if: github.ref == 'refs/heads/master'
-    name: Publish
-    runs-on: ubuntu-22.04
-    needs: version
-    continue-on-error: false
-    timeout-minutes: 2
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - name: publishing package...
-        run: npm publish
+          npm publish
