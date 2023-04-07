@@ -1,5 +1,4 @@
 name: Publishing the version
-
 run-name: Publish
 
 on: push
@@ -8,7 +7,7 @@ jobs:
   pull-request:
     if: github.ref == 'refs/heads/dev'
     continue-on-error: true
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     timeout-minutes: 2
     steps:
       - uses: actions/checkout@v3
@@ -47,11 +46,11 @@ jobs:
           for label in $labels
           do
             echo "Label: $label"
-            if [ $(label) = 'patch' ]; then
+            if [ $label = 'patch' ]; then
               npm version patch
-            elif [ $(label) = 'minor' ]; then
+            elif [ $label = 'minor' ]; then
               npm version minor
-            elif [ $(label) = 'major' ]; then
+            elif [ $label = 'major' ]; then
               npm version major
             fi
           done
