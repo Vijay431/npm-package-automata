@@ -40,8 +40,15 @@ jobs:
         uses: pablogamboa/action-get-merged-pull-request@v1.1
         with:
           github_token: ${{ secrets.TOKEN_PACKAGES }}
-      - name: Read label from merged PR
+      - name: Package Versioning...
         run: |
+          echo "Reading the username"
+          git config user.name "$(git log -n 1 --pretty=format:%an)"
+
+          echo "Reading the email"
+          git config user.email "$(git log -n 1 --pretty=format:%ae)"
+
+          echo "Fetching the previously closed PRs"
           labels=$(echo "${{ steps.pr-details.outputs.labels }}" | tr ',' '\n')
           for label in $labels
           do
@@ -54,9 +61,7 @@ jobs:
               npm version major
             fi
           done
-      - name: Pushing the changes...
-        run: |
-          git config user.name "$(git log -n 1 --pretty=format:%an)"
-          git config user.email "$(git log -n 1 --pretty=format:%ae)"
+
+          echo "Pushing the changes to current branch"
           git add .
           git push
