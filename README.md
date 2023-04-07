@@ -1,3 +1,3 @@
 ## NPM Package Automata
 
-Going to automate this test repo and get published in `npmjs.com`
+Automated to bump the version by `patch`, `minor` or `major` based on the specific branch validation
