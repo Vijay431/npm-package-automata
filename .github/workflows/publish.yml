@@ -58,11 +58,12 @@ jobs:
               npm version major
             fi
           done
+
+          git add .
       - name: Update the code base into `master`
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Version update
-          add_options: --all
 
   publish:
     if: github.ref == 'refs/heads/master'
