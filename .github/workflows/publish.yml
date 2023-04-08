@@ -35,20 +35,17 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: Get Merged Pull Request Info
+      - name: Get merged PR info
         id: pr-details
         uses: pablogamboa/action-get-merged-pull-request@v1.1
-        with:
-          github_token: ${{ secrets.TOKEN_PACKAGES }}
       - name: Package Versioning...
         run: |
-          echo "Reading the username"
+          echo "username: $(git log -n 1 --pretty=format:%an)"
           git config user.name "$(git log -n 1 --pretty=format:%an)"
 
-          echo "Reading the email"
+          echo "email: $(git log -n 1 --pretty=format:%ae)"
           git config user.email "$(git log -n 1 --pretty=format:%ae)"
 
-          echo "Fetching the previously closed PRs"
           labels=$(echo "${{ steps.pr-details.outputs.labels }}" | tr ',' '\n')
           for label in $labels
           do
