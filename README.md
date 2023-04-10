@@ -1,3 +1,7 @@
 ## NPM Package Automata
 
-Automated to bump the version by `patch`, `minor` or `major` based on the specific branch validation
+Automate the package versioning by bumping through GitHub labels such as,
+
+- patch
+- minor
+- major
