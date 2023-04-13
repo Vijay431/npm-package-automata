@@ -1,5 +1,5 @@
 const test = () => {
-	console.log('Testing the automata bumping minor version');
+	console.log('Testing the automata bumping major version');
 };
 
 module.exports = test();
