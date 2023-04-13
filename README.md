@@ -1,3 +1,7 @@
 ## NPM Package Automata
 
-Going to automate this test repo and get published in `npmjs.com`
+Automate the package versioning by bumping through GitHub labels such as,
+
+- patch
+- minor
+- major
