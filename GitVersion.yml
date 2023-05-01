@@ -38,7 +38,7 @@ branches:
     is-mainline: false
     pre-release-weight: 30000
   master:
-    regex: ^master$|^main$
+    regex: ^master$
     mode: ContinuousDelivery
     tag: ""
     increment: Patch

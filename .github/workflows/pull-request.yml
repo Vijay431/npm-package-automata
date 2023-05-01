@@ -7,11 +7,11 @@ permissions:
 on:
   push:
     branches:
-      - "features/*"
-      - "releases/*"
-      - "pr/*"
       - "hotfix/*"
       - "support/*"
+      - "release/*"
+      - "test"
+      - "stage"
       - "dev"
 
 jobs:
