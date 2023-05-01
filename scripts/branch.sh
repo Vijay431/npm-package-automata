@@ -3,6 +3,8 @@
 readonly source_branch=$1
 dest_branch="dev"
 
+echo "source branch: $source_branch"
+
 if [[ $source_branch == *"dev"* ]]; then
   dest_branch="stage"
 elif [[ $source_branch == *"stage"* ]]; then
