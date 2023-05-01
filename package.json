@@ -1,6 +1,6 @@
 {
     "name": "npm-package-automata",
-    "version": "1.0.1",
+    "version": "1.0.0-beta.115",
     "description": "To automate the packager versioning",
     "readme": "Testing the automation of version releasing",
     "license": "ISC",
@@ -14,14 +14,14 @@
         "registry": "https://registry.npmjs.org/"
     },
     "keywords": [
-        "version",
-        "automation",
-        "automate version",
-        "version automation",
-        "package",
-        "public package"
+        "blog",
+        "semver",
+        "technical blog",
+        "version"
     ],
     "files": [
-        "!.github"
+        "*.md",
+        "index.js",
+        "package.json"
     ]
 }
