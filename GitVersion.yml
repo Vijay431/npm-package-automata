@@ -3,50 +3,38 @@ mode: Mainline
 branches:
   develop:
     regex: ^dev(elop)?(ment)?$
-    mode: ContinuousDeployment
+    mode: ContinuousDelivery
     tag: alpha
-    increment: Minor
-    prevent-increment-of-merged-branch-version: true
+    increment: Patch
+    prevent-increment-of-merged-branch-version: false
     track-merge-target: true
     source-branches: []
     tracks-release-branches: true
     is-release-branch: false
-    is-mainline: false
+    is-mainline: true
     pre-release-weight: 0
   stage:
     regex: ^stage$|^test$
-    mode: ContinuousDeployment
+    mode: ContinuousDelivery
     tag: beta
-    increment: Minor
+    increment: Patch
     prevent-increment-of-merged-branch-version: true
     track-merge-target: true
     source-branches: ["develop"]
     tracks-release-branches: true
     is-release-branch: false
-    is-mainline: false
+    is-mainline: true
     pre-release-weight: 0
   release:
     regex: ^release$
     mode: ContinuousDelivery
     tag: rc
-    increment: None
+    increment: Patch
     prevent-increment-of-merged-branch-version: true
     track-merge-target: false
     source-branches: ["stage"]
     tracks-release-branches: false
     is-release-branch: true
-    is-mainline: false
-    pre-release-weight: 30000
-  hotfix:
-    regex: ^hotfix(es)?[/-]
-    mode: ContinuousDelivery
-    tag: beta
-    increment: Patch
-    prevent-increment-of-merged-branch-version: false
-    track-merge-target: false
-    source-branches: ["develop", "master", "support"]
-    tracks-release-branches: false
-    is-release-branch: false
     is-mainline: false
     pre-release-weight: 30000
   master:
@@ -56,42 +44,16 @@ branches:
     increment: Patch
     prevent-increment-of-merged-branch-version: true
     track-merge-target: false
-    source-branches: ["develop", "release"]
+    source-branches: ["release"]
     tracks-release-branches: false
     is-release-branch: false
     is-mainline: true
     pre-release-weight: 55000
-  feature:
-    regex: ^features?[/-]
-    mode: ContinuousDelivery
-    tag: useBranchName
-    increment: Inherit
-    prevent-increment-of-merged-branch-version: false
-    track-merge-target: false
-    source-branches:
-      ["develop", "master", "release", "feature", "support", "hotfix"]
-    tracks-release-branches: false
-    is-release-branch: false
-    is-mainline: false
-    pre-release-weight: 30000
-  pull-request:
-    regex: ^(pull|pull\-requests|pr)[/-]
-    mode: ContinuousDelivery
-    tag: PullRequest
-    increment: Inherit
-    prevent-increment-of-merged-branch-version: false
-    tag-number-pattern: '[/-](?<number>\d+)[-/]'
-    track-merge-target: false
-    source-branches:
-      ["develop", "master", "release", "feature", "support", "hotfix"]
-    tracks-release-branches: false
-    is-release-branch: false
-    is-mainline: false
-    pre-release-weight: 30000
   support:
     regex: ^support[/-]
     mode: ContinuousDelivery
     tag: ""
+    tag-number-pattern: '[/-](?<number>\d+)[-/]'
     increment: Patch
     prevent-increment-of-merged-branch-version: true
     track-merge-target: false
@@ -100,6 +62,19 @@ branches:
     is-release-branch: false
     is-mainline: true
     pre-release-weight: 55000
+  hotfix:
+    regex: ^hotfix(es)?[/-]
+    mode: ContinuousDelivery
+    tag: ""
+    tag-number-pattern: '[/-](?<number>\d+)[-/]'
+    increment: Patch
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: false
+    source-branches: ["master"]
+    tracks-release-branches: false
+    is-release-branch: false
+    is-mainline: false
+    pre-release-weight: 30000
 ignore:
   sha: []
 merge-message-formats: {}
