@@ -5,16 +5,16 @@ branches:
     regex: ^dev(elop)?(ment)?$
     mode: ContinuousDelivery
     tag: alpha
-    increment: Patch
+    increment: Inherit
     prevent-increment-of-merged-branch-version: false
     track-merge-target: true
     source-branches: []
     tracks-release-branches: true
     is-release-branch: false
     is-mainline: true
-    pre-release-weight: 0
+    pre-release-weight: 30000
   stage:
-    regex: ^stage$|^test$
+    regex: ^stage$
     mode: ContinuousDelivery
     tag: beta
     increment: Patch
@@ -26,7 +26,7 @@ branches:
     is-mainline: true
     pre-release-weight: 0
   release:
-    regex: ^release$
+    regex: ^test$
     mode: ContinuousDelivery
     tag: rc
     increment: Patch
