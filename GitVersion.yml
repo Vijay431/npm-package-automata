@@ -1,11 +1,11 @@
-next-version: 1.0.0
 mode: Mainline
+commit-message-incrementing: Enabled
 branches:
   develop:
     regex: ^dev(elop)?(ment)?$
-    mode: ContinuousDelivery
+    mode: ContinuousDeployment
     tag: alpha
-    increment: Inherit
+    increment: Patch
     prevent-increment-of-merged-branch-version: false
     track-merge-target: true
     source-branches: ["master"]
@@ -15,7 +15,7 @@ branches:
     pre-release-weight: 30000
   stage:
     regex: ^stage$
-    mode: ContinuousDelivery
+    mode: ContinuousDeployment
     tag: beta
     increment: Patch
     prevent-increment-of-merged-branch-version: true
@@ -27,7 +27,7 @@ branches:
     pre-release-weight: 0
   release:
     regex: ^test$
-    mode: ContinuousDelivery
+    mode: ContinuousDeployment
     tag: rc
     increment: Patch
     prevent-increment-of-merged-branch-version: true
