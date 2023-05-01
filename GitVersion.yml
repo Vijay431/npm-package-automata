@@ -51,7 +51,7 @@ branches:
     is-mainline: true
     pre-release-weight: 55000
   support:
-    regex: ^support[/-]
+    regex: ^support$
     mode: ContinuousDelivery
     tag: ""
     tag-number-pattern: '[/-](?<number>\d+)[-/]'
@@ -64,7 +64,7 @@ branches:
     is-mainline: true
     pre-release-weight: 55000
   hotfix:
-    regex: ^hotfix(es)?[/-]
+    regex: ^hotfix$
     mode: ContinuousDelivery
     tag: ""
     tag-number-pattern: '[/-](?<number>\d+)[-/]'
