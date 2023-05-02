@@ -34,20 +34,19 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - uses: actions/setup-dotnet@v1
       - uses: gittools/actions/gitversion/setup@v0
         with:
           versionSpec: "5.x"
       - name: Determine Version with git history
-        id: gitversion # id to later be referenced
+        id: gitversion
         uses: gittools/actions/gitversion/execute@v0
       - run: npm install
       - name: Publishing package
         run: |
           readonly VERSION=${{ steps.gitversion.outputs.semVer }}
-          git config user.name ${{ env.USERNAME }}
-          git config user.email ${{ env.EMAIL }}
+          git config user.name "$(git log -n 1 --pretty=format:%an)"
+          git config user.email "$(git log -n 1 --pretty=format:%ae)"
 
           npm version $VERSION
-          git push
+          # git push
           npm publish
