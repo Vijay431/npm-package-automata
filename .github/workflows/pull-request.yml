@@ -53,7 +53,7 @@ jobs:
         with:
           destination_branch: ${{ env.DEST_BRANCH }}
           pr_title: "Pushing changes to ${{ env.DEST_BRANCH }}"
-          pr_template: ".github/PULL_REQUEST_TEMPLATE.md"
+          pr_template: ".github/templates/PULL_REQUEST_TEMPLATE.md"
           pr_assignee: "Vijay431"
           pr_draft: false
           pr_allow_empty: false
