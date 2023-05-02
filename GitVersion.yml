@@ -1,0 +1,81 @@
+next-version: 1.0.0
+mode: Mainline
+commit-message-incrementing: Enabled
+branches:
+  develop:
+    regex: ^dev(elop)?(ment)?$
+    mode: ContinuousDeployment
+    tag: alpha
+    increment: Patch
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: true
+    source-branches: ["master"]
+    tracks-release-branches: true
+    is-release-branch: false
+    is-mainline: true
+    pre-release-weight: 100
+  stage:
+    regex: ^stage$
+    mode: ContinuousDeployment
+    tag: beta
+    increment: Patch
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: true
+    source-branches: ["develop"]
+    tracks-release-branches: true
+    is-release-branch: false
+    is-mainline: true
+    pre-release-weight: 100
+  release:
+    regex: ^test$
+    mode: ContinuousDeployment
+    tag: rc
+    increment: Patch
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: false
+    source-branches: ["stage"]
+    tracks-release-branches: false
+    is-release-branch: true
+    is-mainline: false
+    pre-release-weight: 100
+  master:
+    regex: ^master$
+    mode: ContinuousDelivery
+    tag: ""
+    increment: Patch
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: false
+    source-branches: ["release"]
+    tracks-release-branches: false
+    is-release-branch: false
+    is-mainline: true
+    pre-release-weight: 100
+  support:
+    regex: ^support$
+    mode: ContinuousDelivery
+    tag: ""
+    tag-number-pattern: '[/-](?<number>\d+)[-/]'
+    increment: Patch
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: false
+    source-branches: ["master"]
+    tracks-release-branches: false
+    is-release-branch: false
+    is-mainline: true
+    pre-release-weight: 100
+  hotfix:
+    regex: ^hotfix$
+    mode: ContinuousDelivery
+    tag: ""
+    tag-number-pattern: '[/-](?<number>\d+)[-/]'
+    increment: Patch
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: false
+    source-branches: ["master"]
+    tracks-release-branches: false
+    is-release-branch: false
+    is-mainline: false
+    pre-release-weight: 100
+ignore:
+  sha: []
+merge-message-formats: {}
