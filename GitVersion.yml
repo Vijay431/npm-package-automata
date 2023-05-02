@@ -13,7 +13,7 @@ branches:
     tracks-release-branches: true
     is-release-branch: false
     is-mainline: true
-    pre-release-weight: 30000
+    pre-release-weight: 100
   stage:
     regex: ^stage$
     mode: ContinuousDeployment
@@ -25,7 +25,7 @@ branches:
     tracks-release-branches: true
     is-release-branch: false
     is-mainline: true
-    pre-release-weight: 30000
+    pre-release-weight: 100
   release:
     regex: ^test$
     mode: ContinuousDeployment
@@ -37,7 +37,7 @@ branches:
     tracks-release-branches: false
     is-release-branch: true
     is-mainline: false
-    pre-release-weight: 30000
+    pre-release-weight: 100
   master:
     regex: ^master$
     mode: ContinuousDelivery
@@ -49,9 +49,9 @@ branches:
     tracks-release-branches: false
     is-release-branch: false
     is-mainline: true
-    pre-release-weight: 55000
+    pre-release-weight: 100
   support:
-    regex: ^support[/-]
+    regex: ^support$
     mode: ContinuousDelivery
     tag: ""
     tag-number-pattern: '[/-](?<number>\d+)[-/]'
@@ -62,9 +62,9 @@ branches:
     tracks-release-branches: false
     is-release-branch: false
     is-mainline: true
-    pre-release-weight: 55000
+    pre-release-weight: 100
   hotfix:
-    regex: ^hotfix(es)?[/-]
+    regex: ^hotfix$
     mode: ContinuousDelivery
     tag: ""
     tag-number-pattern: '[/-](?<number>\d+)[-/]'
@@ -75,7 +75,7 @@ branches:
     tracks-release-branches: false
     is-release-branch: false
     is-mainline: false
-    pre-release-weight: 30000
+    pre-release-weight: 100
 ignore:
   sha: []
 merge-message-formats: {}

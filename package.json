@@ -1,6 +1,6 @@
 {
     "name": "npm-package-automata",
-    "version": "1.0.0-beta.115",
+    "version": "1.0.0-alpha.126",
     "description": "To automate the packager versioning",
     "readme": "Testing the automation of version releasing",
     "license": "ISC",
