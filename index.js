@@ -1,5 +1,5 @@
 function greetings() {
-	console.log('Greetings from Automation');
+	console.log("Greetings from Automation");
 }
 
 module.exports = {

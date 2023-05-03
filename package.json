@@ -1,10 +1,9 @@
 {
     "name": "npm-package-automata",
-    "version": "1.0.1",
+    "version": "0.0.0",
     "description": "To automate the packager versioning",
     "readme": "Testing the automation of version releasing",
-    "license": "ISC",
-    "main": "index.js",
+    "license": "UNLICENSED",
     "author": {
         "name": "Vijay Gangatharan",
         "email": "vijayanand431@gmail.com"
@@ -13,15 +12,27 @@
         "access": "public",
         "registry": "https://registry.npmjs.org/"
     },
+    "main": "index.js",
+    "files": [
+        "*.md",
+        "index.js",
+        "package.json"
+    ],
     "keywords": [
         "blog",
         "semver",
         "technical blog",
         "version"
     ],
-    "files": [
-        "*.md",
-        "index.js",
-        "package.json"
-    ]
+    "scripts": {
+        "prettier:check": "prettier --check .",
+        "prettier:write": "prettier --write .",
+        "format": "npx lint-staged"
+    },
+    "devDependencies": {
+        "eslint": "^8.39.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "lint-staged": "^13.2.2",
+        "prettier": "^2.8.8"
+    }
 }

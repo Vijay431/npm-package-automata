@@ -11,9 +11,6 @@ permissions:
 on:
   push:
     branches:
-      - "dev"
-      - "stage"
-      - "test"
       - "master"
       - "support"
       - "hotfix"
