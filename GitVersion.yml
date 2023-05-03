@@ -1,4 +1,4 @@
-next-version: 1.0.1
+next-version: 1.0.33
 mode: Mainline
 commit-message-incrementing: Enabled
 branches:
@@ -53,6 +53,7 @@ branches:
   support:
     regex: ^support$
     mode: ContinuousDelivery
+    assembly-file-versioning-format: "{Major}.{Minor}.{Patch}.{WeightedPreReleaseNumber ?? 0}"
     tag: ""
     tag-number-pattern: '[/-](?<number>\d+)[-/]'
     increment: Patch
