@@ -40,5 +40,8 @@ jobs:
       - name: Publishing package
         run: |
           readonly VERSION=${{ steps.gitversion.outputs.semVer }}
+          git config user.name "$(git log -n 1 --pretty=format:%an)"
+          git config user.email "$(git log -n 1 --pretty=format:%ae)"
+
           npm version $VERSION
           npm publish
