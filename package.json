@@ -14,14 +14,14 @@
         "registry": "https://registry.npmjs.org/"
     },
     "keywords": [
-        "version",
-        "automation",
-        "automate version",
-        "version automation",
-        "package",
-        "public package"
+        "blog",
+        "semver",
+        "technical blog",
+        "version"
     ],
     "files": [
-        "!.github"
+        "*.md",
+        "index.js",
+        "package.json"
     ]
 }

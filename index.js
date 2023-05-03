@@ -1,5 +1,7 @@
-const test = () => {
-	console.log('Testing the automata bumping no version');
-};
+function greetings() {
+	console.log('Greetings from Automation');
+}
 
-module.exports = test();
+module.exports = {
+	greetings,
+};

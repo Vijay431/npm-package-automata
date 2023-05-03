@@ -1,66 +1,47 @@
-name: Publishing the version
-run-name: Publish
-on: push
+name: Package Publish
+run-name: publish
+
+env:
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN_PACKAGES }}
+
+permissions:
+  contents: write
+  packages: write
+
+on:
+  push:
+    branches:
+      - "dev"
+      - "stage"
+      - "test"
+      - "master"
+      - "support"
+      - "hotfix"
 
 jobs:
-  pull-request:
-    name: Pull Request
-    if: github.ref == 'refs/heads/dev'
-    continue-on-error: true
-    runs-on: ubuntu-22.04
-    timeout-minutes: 2
-    steps:
-      - uses: actions/checkout@v3
-      - uses: repo-sync/pull-request@v2
-        with:
-          source_branch: "dev"
-          destination_branch: "master"
-          pr_title: "Merging changes to `master` branch"
-          pr_assignee: "Vijay431"
-          pr_label: "patch"
-          pr_draft: false
-          pr_allow_empty: false
-          github_token: ${{ secrets.PR_TOKEN }}
-
   version:
-    name: Versioning
-    if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-22.04
     continue-on-error: false
+    runs-on: ubuntu-latest
     timeout-minutes: 2
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
-      - name: Get merged PR info
-        id: pr-details
-        uses: pablogamboa/action-get-merged-pull-request@v1.1
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+      - uses: gittools/actions/gitversion/setup@v0
         with:
-          github_token: ${{ secrets.TOKEN_PACKAGES }}
-      - name: Package Versioning...
+          versionSpec: "5.x"
+      - name: Determine Version with git history
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v0
+      - name: Publishing package
         run: |
-          echo "username: $(git log -n 1 --pretty=format:%an)"
+          readonly VERSION=${{ steps.gitversion.outputs.semVer }}
           git config user.name "$(git log -n 1 --pretty=format:%an)"
-
-          echo "email: $(git log -n 1 --pretty=format:%ae)"
           git config user.email "$(git log -n 1 --pretty=format:%ae)"
 
-          labels=$(echo "${{ steps.pr-details.outputs.labels }}" | tr ',' '\n')
-          for label in $labels
-          do
-            echo "Label: $label"
-            if [ $label = 'patch' ]; then
-              npm version patch
-            elif [ $label = 'minor' ]; then
-              npm version minor
-            elif [ $label = 'major' ]; then
-              npm version major
-            fi
-          done
-
-          echo "Pushing the changes to current branch"
-          git add .
-          git push
+          npm version $VERSION
+          npm publish
