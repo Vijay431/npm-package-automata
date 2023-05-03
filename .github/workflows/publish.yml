@@ -1,10 +1,8 @@
-name: Publishing the version
-run-name: Publish
+name: Package Publish
+run-name: publish
 
 env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN_PACKAGES }}
-  USERNAME: Vijay Gangatharan
-  EMAIL: 42581616+Vijay431@users.noreply.github.com
 
 permissions:
   contents: write
@@ -22,7 +20,6 @@ on:
 
 jobs:
   version:
-    name: Version
     continue-on-error: false
     runs-on: ubuntu-latest
     timeout-minutes: 2
