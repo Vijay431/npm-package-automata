@@ -1,10 +1,8 @@
-name: Publishing the version
-run-name: Publish
+name: Package Publish
+run-name: publish
 
 env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN_PACKAGES }}
-  USERNAME: Vijay Gangatharan
-  EMAIL: 42581616+Vijay431@users.noreply.github.com
 
 permissions:
   contents: write
@@ -22,7 +20,6 @@ on:
 
 jobs:
   version:
-    name: Version
     continue-on-error: false
     runs-on: ubuntu-latest
     timeout-minutes: 2
@@ -40,7 +37,6 @@ jobs:
       - name: Determine Version with git history
         id: gitversion
         uses: gittools/actions/gitversion/execute@v0
-      - run: npm install
       - name: Publishing package
         run: |
           readonly VERSION=${{ steps.gitversion.outputs.semVer }}
@@ -48,5 +44,4 @@ jobs:
           git config user.email "$(git log -n 1 --pretty=format:%ae)"
 
           npm version $VERSION
-          # git push
           npm publish
