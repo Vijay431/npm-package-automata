@@ -1,6 +1,9 @@
 next-version: 1.0.33
 mode: Mainline
 commit-message-incrementing: Enabled
+assembly-versioning-scheme: MajorMinorPatch
+assembly-file-versioning-scheme: MajorMinorPatchTag
+assembly-file-versioning-format: "{Major}.{Minor}.{Patch}.{WeightedPreReleaseNumber ?? 0}"
 branches:
   develop:
     regex: ^dev(elop)?(ment)?$
@@ -53,7 +56,6 @@ branches:
   support:
     regex: ^support$
     mode: ContinuousDelivery
-    assembly-file-versioning-format: "{Major}.{Minor}.{Patch}.{WeightedPreReleaseNumber ?? 0}"
     tag: ""
     tag-number-pattern: '[/-](?<number>\d+)[-/]'
     increment: Patch
