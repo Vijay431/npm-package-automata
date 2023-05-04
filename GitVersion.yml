@@ -1,6 +1,9 @@
 next-version: 1.0.33
 mode: Mainline
 commit-message-incrementing: Enabled
+assembly-versioning-scheme: MajorMinorPatch
+assembly-file-versioning-scheme: MajorMinorPatchTag
+assembly-file-versioning-format: "{Major}.{Minor}.{Patch}.{WeightedPreReleaseNumber ?? 0}"
 branches:
   develop:
     regex: ^v\d+-dev$
