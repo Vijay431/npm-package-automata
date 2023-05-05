@@ -1,2 +1,2 @@
-| :exclamation:  Do not download this package   |
-|-----------------------------------------|
+| :exclamation: Do not download this package |
+| ------------------------------------------ |

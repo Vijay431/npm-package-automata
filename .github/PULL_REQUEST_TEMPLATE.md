@@ -7,8 +7,6 @@
 - [ ] Updating PR Title with Jira issue number?
 - [ ] Updating PR Description?
 - Is this is a,
-  - [ ] `hotfix`       - Production fix
-  - [ ] `feature`      - Newly requested feature
-  - [ ] `release`      - Beta release
-  - [ ] `support`      - Support release (Security update/Patch fix)
-  - [ ] `pull request`
+  - [ ] __master__       - Production release
+  - [ ] __support__      - Support release (Security updates, Patch fix)
+  - [ ] __hotfix__       - Production hotfix release
