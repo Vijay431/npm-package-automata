@@ -3,7 +3,7 @@ mode: Mainline
 commit-message-incrementing: Enabled
 assembly-versioning-scheme: MajorMinorPatch
 assembly-file-versioning-scheme: MajorMinorPatchTag
-assembly-file-versioning-format: "{Major}.{Minor}.{Patch}.{WeightedPreReleaseNumber ?? 0}"
+assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{WeightedPreReleaseNumber ?? 0}'
 branches:
   develop:
     regex: ^v\d+-dev$
@@ -34,7 +34,7 @@ branches:
   master:
     regex: ^v\d+$
     mode: ContinuousDelivery
-    tag: ""
+    tag: ''
     increment: Minor
     prevent-increment-of-merged-branch-version: true
     track-merge-target: false
@@ -47,7 +47,7 @@ branches:
   support:
     regex: ^support$
     mode: ContinuousDelivery
-    tag: ""
+    tag: ''
     increment: Patch
     prevent-increment-of-merged-branch-version: false
     track-merge-target: false
@@ -60,7 +60,7 @@ branches:
   hotfix:
     regex: ^hotfix$
     mode: ContinuousDelivery
-    tag: ""
+    tag: ''
     increment: Patch
     prevent-increment-of-merged-branch-version: false
     track-merge-target: false

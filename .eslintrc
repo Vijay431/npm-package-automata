@@ -1,11 +1,12 @@
 {
-    "root": true,
-    "env": {
-        "commonjs": true,
-        "es6": true,
-        "node": true
-    },
-    "plugins": [
-        "prettier"
-    ]
+  "root": true,
+  "env": {
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "warn"
+  }
 }

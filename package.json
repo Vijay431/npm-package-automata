@@ -1,38 +1,36 @@
 {
-    "name": "npm-package-automata",
-    "version": "0.0.0",
-    "description": "To automate the packager versioning",
-    "readme": "Testing the automation of version releasing",
-    "license": "UNLICENSED",
-    "author": {
-        "name": "Vijay Gangatharan",
-        "email": "vijayanand431@gmail.com"
-    },
-    "publishConfig": {
-        "access": "public",
-        "registry": "https://registry.npmjs.org/"
-    },
-    "main": "index.js",
-    "files": [
-        "*.md",
-        "index.js",
-        "package.json"
-    ],
-    "keywords": [
-        "blog",
-        "semver",
-        "technical blog",
-        "version"
-    ],
-    "scripts": {
-        "prettier:check": "prettier --check .",
-        "prettier:write": "prettier --write .",
-        "format": "npx lint-staged"
-    },
-    "devDependencies": {
-        "eslint": "^8.39.0",
-        "eslint-plugin-prettier": "^4.2.1",
-        "lint-staged": "^13.2.2",
-        "prettier": "^2.8.8"
-    }
+  "name": "npm-package-automata",
+  "version": "0.0.0",
+  "description": "To automate the packager versioning",
+  "readme": "Testing the automation of version releasing",
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Vijay Gangatharan",
+    "email": "vijayanand431@gmail.com"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "main": "index.js",
+  "files": [
+    "*.md",
+    "index.js",
+    "package.json"
+  ],
+  "keywords": [
+    "blog",
+    "semver",
+    "technical blog",
+    "version"
+  ],
+  "scripts": {
+    "format": "npx lint-staged"
+  },
+  "devDependencies": {
+    "eslint": "^8.39.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8"
+  }
 }
