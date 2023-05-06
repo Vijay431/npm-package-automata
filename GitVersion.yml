@@ -1,9 +1,9 @@
-next-version: 1.0.1
+next-version: 1.0.5
 mode: Mainline
 commit-message-incrementing: Enabled
 branches:
   develop:
-    regex: ^dev(elop)?(ment)?$
+    regex: ^v\d+-dev$
     mode: ContinuousDeployment
     tag: alpha
     increment: Patch
@@ -12,40 +12,28 @@ branches:
     source-branches: ["master"]
     tracks-release-branches: true
     is-release-branch: false
-    is-mainline: true
+    is-mainline: false
     pre-release-weight: 100
   stage:
-    regex: ^stage$
+    regex: ^v\d+-stage$
     mode: ContinuousDeployment
     tag: beta
     increment: Patch
-    prevent-increment-of-merged-branch-version: true
+    prevent-increment-of-merged-branch-version: false
     track-merge-target: true
     source-branches: ["develop"]
     tracks-release-branches: true
     is-release-branch: false
-    is-mainline: true
-    pre-release-weight: 100
-  release:
-    regex: ^test$
-    mode: ContinuousDeployment
-    tag: rc
-    increment: Patch
-    prevent-increment-of-merged-branch-version: true
-    track-merge-target: false
-    source-branches: ["stage"]
-    tracks-release-branches: false
-    is-release-branch: true
     is-mainline: false
     pre-release-weight: 100
   master:
-    regex: ^master$
+    regex: ^v\d+$
     mode: ContinuousDelivery
     tag: ""
-    increment: Patch
+    increment: Minor
     prevent-increment-of-merged-branch-version: true
     track-merge-target: false
-    source-branches: ["release"]
+    source-branches: ["stage"]
     tracks-release-branches: false
     is-release-branch: false
     is-mainline: true
@@ -54,7 +42,6 @@ branches:
     regex: ^support$
     mode: ContinuousDelivery
     tag: ""
-    tag-number-pattern: '[/-](?<number>\d+)[-/]'
     increment: Patch
     prevent-increment-of-merged-branch-version: true
     track-merge-target: false
@@ -62,20 +49,19 @@ branches:
     tracks-release-branches: false
     is-release-branch: false
     is-mainline: true
-    pre-release-weight: 100
+    pre-release-weight: 10
   hotfix:
     regex: ^hotfix$
     mode: ContinuousDelivery
     tag: ""
-    tag-number-pattern: '[/-](?<number>\d+)[-/]'
     increment: Patch
-    prevent-increment-of-merged-branch-version: false
+    prevent-increment-of-merged-branch-version: true
     track-merge-target: false
     source-branches: ["master"]
     tracks-release-branches: false
     is-release-branch: false
-    is-mainline: false
-    pre-release-weight: 100
+    is-mainline: true
+    pre-release-weight: 10
 ignore:
   sha: []
 merge-message-formats: {}
