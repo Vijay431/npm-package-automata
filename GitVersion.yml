@@ -37,7 +37,7 @@ branches:
     tracks-release-branches: false
     is-release-branch: false
     is-mainline: true
-    pre-release-weight: 10
+    pre-release-weight: 100
   support:
     regex: ^support$
     mode: ContinuousDelivery
