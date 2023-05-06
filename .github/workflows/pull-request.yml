@@ -28,16 +28,16 @@ jobs:
           source_branch=${{ steps.vars.outputs.short_ref }}
           dest_branch="dev"
 
-          if [[ $source_branch == "v1-dev" ]]; then
-            dest_branch="v1-stage"
-          elif [[ $source_branch == "v1-stage" ]]; then
-            dest_branch="v1"
+          if [[ $source_branch == "v2-dev" ]]; then
+            dest_branch="v2-stage"
+          elif [[ $source_branch == "v2-stage" ]]; then
+            dest_branch="v2"
           elif [[ $source_branch == *"support"* ]]; then
             dest_branch="support"
           elif [[ $source_branch == *"hotfix"* ]]; then
             dest_branch="hotfix"
           else
-            dest_branch="v1"
+            dest_branch="v2"
           fi
 
           echo "Source Branch: $source_branch"
