@@ -10,10 +10,9 @@ on:
     branches:
       - "hotfix/*"
       - "support/*"
-      - "release/*"
-      - "test"
-      - "stage"
-      - "dev"
+      - "v1"
+      - "v*-stage"
+      - "v*-dev"
 
 jobs:
   pull_request:
@@ -30,18 +29,16 @@ jobs:
           source_branch=${{ steps.vars.outputs.short_ref }}
           dest_branch="dev"
 
-          if [[ $source_branch == "dev" ]]; then
-            dest_branch="stage"
-          elif [[ $source_branch == "stage" ]]; then
-            dest_branch="test"
-          elif [[ $source_branch == *"release"* ]]; then
-            dest_branch="release"
+          if [[ $source_branch == "v1-dev" ]]; then
+            dest_branch="v1-stage"
+          elif [[ $source_branch == "v1-stage" ]]; then
+            dest_branch="v1"
           elif [[ $source_branch == *"support"* ]]; then
             dest_branch="support"
           elif [[ $source_branch == *"hotfix"* ]]; then
             dest_branch="hotfix"
           else
-            dest_branch="master"
+            dest_branch="v1"
           fi
 
           echo "Source Branch: $source_branch"
