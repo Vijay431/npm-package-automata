@@ -10,10 +10,9 @@ on:
     branches:
       - "hotfix/*"
       - "support/*"
-      - "release/*"
-      - "test"
-      - "stage"
-      - "dev"
+      - "v1"
+      - "v*-stage"
+      - "v*-dev"
 
 jobs:
   pull_request:
