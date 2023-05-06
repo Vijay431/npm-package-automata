@@ -30,14 +30,14 @@ branches:
     regex: ^v\d+$
     mode: ContinuousDelivery
     tag: ""
-    increment: Minor
+    increment: Patch
     prevent-increment-of-merged-branch-version: true
     track-merge-target: false
     source-branches: ["stage"]
     tracks-release-branches: false
     is-release-branch: false
     is-mainline: true
-    pre-release-weight: 100
+    pre-release-weight: 10
   support:
     regex: ^support$
     mode: ContinuousDelivery
